@@ -68,11 +68,13 @@ class Tagger
     end
 
     def tag
+      puts "tagged instance: #{instance.id}, region: #{region}, key: #{key}, value: #{value}"
       tag_ebs_volumes
       tag_instance
     end
 
     def untag
+      puts "untagged instance: #{instance.id}, region: #{region}, key: #{key}, value: #{value}"
       untag_ebs_volumes
       untag_instance
     end
