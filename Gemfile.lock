@@ -8,6 +8,9 @@ GEM
       aws-partitions (~> 1, >= 1.239.0)
       aws-sigv4 (~> 1.1)
       jmespath (~> 1.0)
+    aws-sdk-datapipeline (1.16.0)
+      aws-sdk-core (~> 3, >= 3.71.0)
+      aws-sigv4 (~> 1.1)
     aws-sdk-ec2 (1.130.0)
       aws-sdk-core (~> 3, >= 3.71.0)
       aws-sigv4 (~> 1.1)
@@ -24,6 +27,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk-datapipeline
   aws-sdk-ec2
   pry
 
