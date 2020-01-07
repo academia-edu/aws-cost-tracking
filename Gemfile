@@ -2,5 +2,5 @@
 
 source "https://rubygems.org"
 
-gem "aws-sdk", "~> 3"
+gem "aws-sdk-ec2"
 gem "pry"
