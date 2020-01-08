@@ -26,13 +26,18 @@ class Tagger
     "us-west-2",
   ]
 
-  attr_reader :key, :value, :server_classes, :stages, :regions
+  attr_reader :key, :value, :server_classes, :names, :stages, :regions
 
-  def initialize(key:, value:, server_classes:, stages:, regions: REGIONS)
+  def initialize(key:, value:, server_classes: nil, names: nil, stages: nil, regions: REGIONS)
+    if server_classes.nil? && names.nil?
+      raise ArgumentError, "must supply `server_classes` or `names`"
+    end
+
     @key = key
     @value = value
-    @server_classes = Array(server_classes)
-    @stages = Array(stages)
+    @server_classes = Array(server_classes) unless server_classes.nil?
+    @names = Array(names) unless names.nil?
+    @stages = Array(stages) unless stages.nil?
     @regions = Array(regions)
   end
 
@@ -48,10 +53,12 @@ class Tagger
     regions.each do |region|
       ec2 = Aws::EC2::Resource.new(region: region)
 
-      ec2.instances(filters: [
+      filters = [
         { name: "tag:server_class", values: server_classes },
         { name: "tag:stage", values: stages },
-      ]).each do |instance|
+        { name: "tag:Name", values: names },
+      ].reject { |filter| filter.fetch(:values).nil? }
+      ec2.instances(filters: filters).each do |instance|
         yield InstanceTagger.new(instance: instance, region: region, key: key, value: value)
       end
     end

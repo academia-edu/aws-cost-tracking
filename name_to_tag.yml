@@ -1,0 +1,18 @@
+---
+ann-search-production:
+  cost_owner: tiger
+  note: "distribution system; see https://academiaedu.slack.com/archives/CHNPVL9UP/p1576360677003100?thread_ts=1576360677.003100"
+awrep-dashboard-production:
+  cost_owner: sre
+awrep-dashboard-production:
+  cost_owner: sre
+awrep-dashboard-qa:
+  cost_owner: sre
+awrep-production:
+  cost_owner: sre
+awrep-qa:
+  cost_owner: sre
+LDAP Server:
+  cost_owner: sre
+mlservice-production:
+  cost_owner: tiger
