@@ -17,6 +17,8 @@ class S3
           ],
         },
       })
+    rescue Aws::S3::Errors::PermanentRedirect
+      puts "permanent redirect for bucket #{name}"
     end
   end
 
