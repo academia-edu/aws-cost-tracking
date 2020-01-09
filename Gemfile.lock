@@ -14,6 +14,13 @@ GEM
     aws-sdk-ec2 (1.130.0)
       aws-sdk-core (~> 3, >= 3.71.0)
       aws-sigv4 (~> 1.1)
+    aws-sdk-kms (1.27.0)
+      aws-sdk-core (~> 3, >= 3.71.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.60.1)
+      aws-sdk-core (~> 3, >= 3.83.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.1)
     aws-sigv4 (1.1.0)
       aws-eventstream (~> 1.0, >= 1.0.2)
     coderay (1.1.2)
@@ -29,6 +36,7 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk-datapipeline
   aws-sdk-ec2
+  aws-sdk-s3
   pry
 
 BUNDLED WITH
