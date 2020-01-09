@@ -5,6 +5,7 @@ require "aws-sdk-s3"
 class S3
   def tag_buckets_with_bucket_name
     bucket_names.each do |name|
+      puts %[tagging bucket "#{name}" with `s3_bucket_name: #{name.inspect}]
       client.put_bucket_tagging({
         bucket: name,
         tagging: {
