@@ -9,11 +9,16 @@ require_relative 'tagger'
 
 module TeamCostOwners
   def server_classes_to_tag
-    CSV.read('server_classes_to_tag.csv')
+    {
+      # for example:
+      # "AcademiaZoo::Logging" => "sre",
+    }
   end
 
   def server_classes_by_team
-    server_classes_to_tag.to_h.group_by {|k,v| v}.transform_values {|a| a.map(&:first)}
+    server_classes_to_tag.
+      group_by { |_, v| v }.
+      transform_values { |a| a.map(&:first) }
   end
 
   def tag_ec2_cost_owners!(server_classes_by_team, stages:)
